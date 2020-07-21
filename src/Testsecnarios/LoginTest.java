@@ -13,6 +13,11 @@ import com.sun.jna.platform.unix.X11.Window;
 
 public class LoginTest {
 
+	public static String actualPrice = null;
+	public static String expectedPrice = null;
+	public static String actualName = null;
+	public static String expectedName = null;
+	
 	public static void main(String[] args) {
 
 		WebDriver driver = null;
@@ -74,11 +79,15 @@ public class LoginTest {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		// clicking the item
 		//driver.findElement(By.cssSelector("img[class='_1Nyybr _30XEf0'][alt='Richuzers Point And Shoot Digital Camera For Kids Best Gift For Kids']"))
 				//.click();
 		
-		
+		//find price of item you are clicking and store in price0;
+		actualPrice = driver.findElement(By.id("")).getText();
+		//find name of item and store in name0;
+		actualName = driver.findElement(By.id("")).getText();
+
+		// clicking the item
 		driver.findElement(By.xpath("//img[@alt='Richuzers Point And Shoot Digital Camera For Kids Best Gift For Kids']")).click();
 		
 		
@@ -119,15 +128,16 @@ public class LoginTest {
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}		
+		}	
+		
+		//read price and store in price1;
+		expectedPrice = driver.findElement(By.id("")).getText();
+		//read name and store in name1;
+		expectedName = driver.findElement(By.id("")).getText();
+
+		
 		// click on place order
 		driver.findElement(By.xpath("//*[@class='_2AkmmA iwYpF9 _7UHT_c']")).click();
-
-		// find from drop down menu and click on logout 
-		
-		// create JUNIT class and do assertion of name,price,
-		
-		// close windows and driver
 		
 		//driver.close();		
 	}

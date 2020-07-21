@@ -2,46 +2,42 @@ package SmokeTests;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.FixMethodOrder;
 import org.junit.Test;
-import org.openqa.selenium.WebDriver;
+import org.junit.runners.MethodSorters;
 
 import Testsecnarios.LoginTest;
 import junit.framework.Assert;
 
-@TestMethodOrder(Order.Annotation.class)
-
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class VerificationJunit {
-	
-	private static StringBuilder ouput= new StringBuilder("");
-	
+
+	public static String actualPrice = null;
+	public static String expectedPrice = null;
+	public static String actualName = null;
+	public static String expectedName = null;
+
+
 	@Test
-	@order(1)
-	public void VerifyingPrice()
-	{
+	public void CheckIfOrderisGettingPlaced() {
 		LoginTest.main(null);
-		Assert.assertEquals(LoginTest.actualPrice, LoginTest.expectedPrice);
-		
-	
+		System.out.println("order placed");
 	}
-	
-	public void VerfyingName()
-	{
-		
-		Assert.assertEquals(LoginTest.actualName,LoginTest.expectedName);		
-	}
-	
 
-	@Before
-	public void setup()
-	{
-	 System.out.println("setup");	
+	@Test
+	public void VerfyingName() {
+		System.out.println("Name at Search Page: "+actualName);
+		System.out.println("Name at CheckoutPage: "+expectedName);
+		Assert.assertEquals(actualName, expectedName);
+		
 	}
-	
-	@After
-	public void close()
-	{
-		 System.out.println("close");	
 
+	@Test
+	public void VerifyingPrice() {
+		System.out.println("Price at Search Page: "+actualPrice);
+		System.out.println("Price at CheckoutPage: "+expectedPrice);
+		Assert.assertEquals(actualPrice, expectedPrice);
 	}
+
 
 }
